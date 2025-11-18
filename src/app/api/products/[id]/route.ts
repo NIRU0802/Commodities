@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getProducts, saveProducts } from "@/lib/products";
+import type { Product } from "@/types/product";
 
 export async function PUT(
   req: Request,
@@ -8,13 +9,13 @@ export async function PUT(
   const { id } = params;
 
   const updates = await req.json();
-  const products = await getProducts();
+  const products: Product[] = getProducts(); // NO await
 
-  const updatedProducts = products.map((p) =>
+  const updatedProducts = products.map((p: Product) =>
     p.id === id ? { ...p, ...updates } : p
   );
 
-  await saveProducts(updatedProducts);
+  saveProducts(updatedProducts);
 
   return NextResponse.json({ status: "updated" });
 }
@@ -25,10 +26,10 @@ export async function DELETE(
 ) {
   const { id } = params;
 
-  const products = await getProducts();
-  const filteredProducts = products.filter((p) => p.id !== id);
+  const products: Product[] = getProducts(); // NO await
+  const filteredProducts = products.filter((p: Product) => p.id !== id);
 
-  await saveProducts(filteredProducts);
+  saveProducts(filteredProducts);
 
   return NextResponse.json({ status: "deleted" });
 }
