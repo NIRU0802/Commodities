@@ -1,35 +1,35 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getProducts, saveProducts } from "@/lib/products";
 import type { Product } from "@/types/product";
 
 export async function PUT(
-  req: Request,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const { id } = params;
+  const { id } = params; // No await needed
 
   const updates = await req.json();
-  const products: Product[] = getProducts(); // NO await
+  const products: Product[] = await getProducts();
 
-  const updatedProducts = products.map((p: Product) =>
+  const updatedProducts = products.map((p) =>
     p.id === id ? { ...p, ...updates } : p
   );
 
-  saveProducts(updatedProducts);
+  await saveProducts(updatedProducts);
 
   return NextResponse.json({ status: "updated" });
 }
 
 export async function DELETE(
-  req: Request,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) {
   const { id } = params;
 
-  const products: Product[] = getProducts(); // NO await
-  const filteredProducts = products.filter((p: Product) => p.id !== id);
+  const products: Product[] = await getProducts();
+  const filteredProducts = products.filter((p) => p.id !== id);
 
-  saveProducts(filteredProducts);
+  await saveProducts(filteredProducts);
 
   return NextResponse.json({ status: "deleted" });
 }
