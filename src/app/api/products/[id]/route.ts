@@ -3,12 +3,12 @@ import { getProducts, saveProducts } from "@/lib/products";
 import type { Product } from "@/types/product";
 
 export async function PUT(
-  req: NextRequest,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: { id: string } }
 ) {
-  const { id } = params; // No await needed
+  const id = context.params.id;
 
-  const updates = await req.json();
+  const updates = await request.json();
   const products: Product[] = await getProducts();
 
   const updatedProducts = products.map((p) =>
@@ -21,10 +21,10 @@ export async function PUT(
 }
 
 export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: { id: string } }
 ) {
-  const { id } = params;
+  const id = context.params.id;
 
   const products: Product[] = await getProducts();
   const filteredProducts = products.filter((p) => p.id !== id);
