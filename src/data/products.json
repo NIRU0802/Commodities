@@ -1,0 +1,17 @@
+[
+  { "id": "p1", "name": "Wheat", "price": 40, "quantity": 150 },
+  { "id": "p2", "name": "Rice", "price": 60, "quantity": 1 },
+  { "id": "p3", "name": "Corn", "price": 150, "quantity": 40 },
+  { "id": "p4", "name": "Dal", "price": 50, "quantity": 140 },
+  { "id": "p5", "name": "Barley", "price": 45, "quantity": 70 },
+  { "id": "p6", "name": "Oats", "price": 90, "quantity": 30 },
+  { "id": "p7", "name": "Sugar", "price": 35, "quantity": 200 },
+  { "id": "p8", "name": "Salt", "price": 20, "quantity": 180 },
+  { "id": "p9", "name": "Maize Flour", "price": 55, "quantity": 10 },
+  { "id": "p10", "name": "Soybeans", "price": 120, "quantity": 5 },
+  { "id": "p11", "name": "Chickpeas", "price": 70, "quantity": 80 },
+  { "id": "p12", "name": "Green Gram", "price": 85, "quantity": 25 },
+  { "id": "p13", "name": "Peanuts", "price": 60, "quantity": 50 },
+  { "id": "p14", "name": "Mustard Seeds", "price": 100, "quantity": 12 },
+  { "id": "p15", "name": "Black Lentils", "price": 90, "quantity": 8 }
+]
